@@ -2,10 +2,10 @@ package com.codecool.app;
 
 import com.codecool.app.views.View;
 
-public class TerminalApp {
+public class DesktopApp {
     private View view;
 
-    public TerminalApp(View view) {
+    public DesktopApp(View view) {
         this.view = view;
     }
 
