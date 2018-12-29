@@ -4,12 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
+import java.util.List;
 
 public class TerminalView implements View {
 
     @Override
     public void printMenu() {
-        String menu = "1. Search\n" +
+        String menu = "1. Print Mentors' Names\n" +
                 "0. Exit";
         System.out.println(menu);
     }
@@ -26,5 +27,21 @@ public class TerminalView implements View {
             throw new InputMismatchException("Please choose valid option");
         }
         return option;
+    }
+
+    @Override
+    public void printResults(List<List<String>> results) {
+        for (List<String> line : results) {
+            printLine(line);
+        }
+    }
+
+    private void printLine(List<String> line){
+        StringBuilder builder = new StringBuilder();
+        for (String word : line) {
+            builder.append(word);
+            builder.append(" | ");
+        }
+        System.out.println(builder.toString());
     }
 }
