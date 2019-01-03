@@ -41,4 +41,13 @@ public class Controller {
             System.out.println(e.getMessage());
         }
     }
+
+    public void pringApplicantsContactsByMail(){
+        try{
+            List<List<String>> contacts = daoSimple.getApplicantContactByMail();
+            view.printResults(contacts);
+        } catch (NoSuchElementException e ){
+            System.out.println(e.getMessage());
+        }
+    }
 }

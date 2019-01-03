@@ -27,8 +27,15 @@ public class DAOSimpleSQL implements DAOSimple {
 
     @Override
     public List<List<String>> getCarols() throws NoSuchElementException {
-        String sql = "SELECT CONCAT(first_name, last_name) AS full_name, phone_number FROM public.applicants " +
+        String sql = "SELECT CONCAT(first_name, last_name) AS full_name, phone_number FROM applicants " +
                 "WHERE first_name LIKE 'Carol%'";
+        return getResults(sql);
+    }
+
+    @Override
+    public List<List<String>> getApplicantContactByMail() throws NoSuchElementException {
+        String sql = "SELECT CONCAT(first_name, last_name) AS full_name, phone_number FROM applicants " +
+                "WHERE email  like '%@adipiscingenimmi.edu'";
         return getResults(sql);
     }
 
@@ -39,7 +46,7 @@ public class DAOSimpleSQL implements DAOSimple {
             resultSet = ps.executeQuery();
             return convertResultSetToList(resultSet);
         } catch (SQLException e) {
-            throw new NoSuchElementException("No names found");
+            throw new NoSuchElementException("No records found found");
         }
     }
 

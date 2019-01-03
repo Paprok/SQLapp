@@ -13,6 +13,7 @@ public class TerminalView implements View {
         String menu = "1. Print Mentors' Names\n" +
                 "2. Print Miscolcs' Mentors Nicknames\n" +
                 "3. Print Each Carol's Numbers\n" +
+                "4. Print applicants contact with given mail\n" +
                 "0. Exit";
         System.out.println(menu);
     }
@@ -25,7 +26,7 @@ public class TerminalView implements View {
             System.out.println("Option: ");
             String input = br.readLine();
             option =  Integer.parseInt(input);
-        } catch (IOException e){
+        } catch (IOException | NumberFormatException e){
             throw new InputMismatchException("Please choose valid option");
         }
         return option;

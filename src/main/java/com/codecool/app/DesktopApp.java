@@ -21,6 +21,8 @@ public class DesktopApp {
         this.controller = new Controller(daoSimple, view);
     }
 
+    //TODO: Ask about clean way to manage those shitty querys, is hashmap ok (stored in daoSQL) whereas here only list of menu entries?
+    //TODO: Loading from file? and creating list? Idk
     public void run() {
         int option = -1;
         while (option != 0) {
@@ -35,6 +37,9 @@ public class DesktopApp {
                     break;
                 case 3:
                     controller.printCarols();
+                    break;
+                case 4:
+                    controller.pringApplicantsContactsByMail();
                     break;
             }
         }
