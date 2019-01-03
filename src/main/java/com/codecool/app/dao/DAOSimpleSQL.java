@@ -24,23 +24,24 @@ public class DAOSimpleSQL implements DAOSimple {
             PreparedStatement ps = connection.prepareStatement(sql);
             resultSet = ps.executeQuery();
             return convertResultSetToList(resultSet);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new NoSuchElementException("No names found");
         }
     }
 
     @Override
-    public List<List<String>> getMiscolcMentors() throws NoSuchElementException {
-        String sql = "";
+    public List<List<String>> getMiscolcNicks() throws NoSuchElementException {
+        String sql = "SELECT nick_name FROM mentors " +
+                "WHERE city LIKE 'Miskolc'";
         return getResults(sql);
     }
 
-    private List<List<String>> convertResultSetToList(ResultSet resultSet) throws SQLException{
+    private List<List<String>> convertResultSetToList(ResultSet resultSet) throws SQLException {
         List<List<String>> list = new ArrayList<>();
         List<String> line;
-        while(resultSet.next()) {
+        while (resultSet.next()) {
             line = new ArrayList<>();
-            for(int i =1; i <= columnNumber(resultSet); i++) {
+            for (int i = 1; i <= columnNumber(resultSet); i++) {
                 String result = resultSet.getString(i);
                 line.add(result);
             }
@@ -49,8 +50,8 @@ public class DAOSimpleSQL implements DAOSimple {
         return list;
     }
 
-    private int columnNumber(ResultSet resultSet) throws SQLException{
+    private int columnNumber(ResultSet resultSet) throws SQLException {
         ResultSetMetaData data = resultSet.getMetaData();
-        return  data.getColumnCount();
+        return data.getColumnCount();
     }
 }

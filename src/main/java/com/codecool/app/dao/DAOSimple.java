@@ -5,5 +5,5 @@ import java.util.NoSuchElementException;
 
 public interface DAOSimple {
     List<List<String>> getMentorNames() throws NoSuchElementException;
-    List<List<String>> getMiscolcMentors() throws NoSuchElementException;
+    List<List<String>> getMiscolcNicks() throws NoSuchElementException;
 }
