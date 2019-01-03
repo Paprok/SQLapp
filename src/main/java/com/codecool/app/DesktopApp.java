@@ -27,9 +27,12 @@ public class DesktopApp {
             view.printMenu();
             option = view.getInt();
             switch (option) {
-                case 1: controller.printMentorNames();
-                break;
-
+                case 1:
+                    controller.printMentorNames();
+                    break;
+                case 2:
+                    controller.printMiscolcsNicks();
+                    break;
             }
         }
     }
