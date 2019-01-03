@@ -15,6 +15,10 @@ public class DAOSimpleSQL implements DAOSimple {
     @Override
     public List<List<String>> getMentorNames() throws NoSuchElementException {
         String sql = "SELECT first_name, last_name FROM mentors";
+        return getResults(sql);
+    }
+
+    private List<List<String>> getResults(String sql) {
         ResultSet resultSet;
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -23,6 +27,12 @@ public class DAOSimpleSQL implements DAOSimple {
         } catch (SQLException e){
             throw new NoSuchElementException("No names found");
         }
+    }
+
+    @Override
+    public List<List<String>> getMiscolcMentors() throws NoSuchElementException {
+        String sql = "";
+        return getResults(sql);
     }
 
     private List<List<String>> convertResultSetToList(ResultSet resultSet) throws SQLException{
