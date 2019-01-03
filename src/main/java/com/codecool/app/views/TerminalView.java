@@ -11,7 +11,8 @@ public class TerminalView implements View {
     @Override
     public void printMenu() {
         String menu = "1. Print Mentors' Names\n" +
-                "2. Print Miscolcs' Mentors Nicknames" + 
+                "2. Print Miscolcs' Mentors Nicknames\n" +
+                "3. Print Each Carol's Numbers\n" +
                 "0. Exit";
         System.out.println(menu);
     }

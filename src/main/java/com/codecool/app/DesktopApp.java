@@ -33,6 +33,9 @@ public class DesktopApp {
                 case 2:
                     controller.printMiscolcsNicks();
                     break;
+                case 3:
+                    controller.printCarols();
+                    break;
             }
         }
     }

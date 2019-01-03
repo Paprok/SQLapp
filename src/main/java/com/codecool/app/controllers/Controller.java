@@ -32,4 +32,13 @@ public class Controller {
             System.out.println(e.getMessage());
         }
     }
+
+    public void printCarols(){
+        try{
+            List<List<String>> carols = daoSimple.getCarols();
+            view.printResults(carols);
+        } catch (NoSuchElementException e ){
+            System.out.println(e.getMessage());
+        }
+    }
 }

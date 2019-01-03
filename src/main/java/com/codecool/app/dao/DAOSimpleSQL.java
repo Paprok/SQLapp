@@ -18,6 +18,20 @@ public class DAOSimpleSQL implements DAOSimple {
         return getResults(sql);
     }
 
+    @Override
+    public List<List<String>> getMiscolcNicks() throws NoSuchElementException {
+        String sql = "SELECT nick_name FROM mentors " +
+                "WHERE city LIKE 'Miskolc'";
+        return getResults(sql);
+    }
+
+    @Override
+    public List<List<String>> getCarols() throws NoSuchElementException {
+        String sql = "SELECT CONCAT(first_name, last_name) AS full_name, phone_number FROM public.applicants " +
+                "WHERE first_name LIKE 'Carol%'";
+        return getResults(sql);
+    }
+
     private List<List<String>> getResults(String sql) {
         ResultSet resultSet;
         try {
@@ -27,13 +41,6 @@ public class DAOSimpleSQL implements DAOSimple {
         } catch (SQLException e) {
             throw new NoSuchElementException("No names found");
         }
-    }
-
-    @Override
-    public List<List<String>> getMiscolcNicks() throws NoSuchElementException {
-        String sql = "SELECT nick_name FROM mentors " +
-                "WHERE city LIKE 'Miskolc'";
-        return getResults(sql);
     }
 
     private List<List<String>> convertResultSetToList(ResultSet resultSet) throws SQLException {
