@@ -21,8 +21,9 @@ public class DesktopApp {
         this.controller = new Controller(daoSimple, view);
     }
 
-    //TODO: Ask about clean way to manage those shitty querys, is hashmap ok (stored in daoSQL) whereas here only list of menu entries?
+    //TODO: Ask about clean way to manage those shitty queries, is hashmap ok (stored in daoSQL) whereas here only list of menu entries?
     //TODO: Loading from file? and creating list? Idk
+    //TODO: How to manage cleanly those menus? Create hasnmap of String menu : reflection of method? XD or new class holding necessary info? hmm
     public void run() {
         int option = -1;
         while (option != 0) {
@@ -39,7 +40,13 @@ public class DesktopApp {
                     controller.printCarols();
                     break;
                 case 4:
-                    controller.pringApplicantsContactsByMail();
+                    controller.printApplicantsContactsByMail();
+                    break;
+                case 5:
+                    controller.insertMarcus();
+                    break;
+                case 6:
+                    controller.printApplicant54823();
                     break;
             }
         }

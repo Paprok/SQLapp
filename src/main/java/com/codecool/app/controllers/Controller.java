@@ -42,12 +42,30 @@ public class Controller {
         }
     }
 
-    public void pringApplicantsContactsByMail(){
+    public void printApplicantsContactsByMail(){
         try{
             List<List<String>> contacts = daoSimple.getApplicantContactByMail();
             view.printResults(contacts);
         } catch (NoSuchElementException e ){
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertMarcus(){
+        boolean isSuccessful = this.daoSimple.insertMarcus();
+        if(isSuccessful){
+            view.printMessage("Added Marcus sucessfully :)");
+        } else {
+            view.printMessage("Couldn't add Marcus, check connection");
+        }
+    }
+
+    public void printApplicant54823(){
+        try{
+            List<List<String>> applicants = this.daoSimple.selectApplication54823();
+            view.printResults(applicants);
+        } catch (NoSuchElementException e){
+            view.printMessage(e.getMessage());
         }
     }
 }
