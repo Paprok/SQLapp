@@ -47,4 +47,9 @@ public class TerminalView implements View {
         }
         System.out.println(builder.toString());
     }
+
+    @Override
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
 }

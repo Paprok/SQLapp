@@ -7,4 +7,5 @@ public interface View {
     int getInt() throws InputMismatchException;
     void printMenu();
     void printResults(List<List<String>> results);
+    void printMessage(String message);
 }
