@@ -73,6 +73,16 @@ public class Controller {
         try{
             this.daoSimple.updateForeman();
             view.printMessage("updated Foreman");
+            view.printResults(this.daoSimple.getForeman());
+        } catch (NoSuchElementException e){
+            this.view.printMessage(e.getMessage());
+        }
+    }
+
+    public void deleteMariseuDomain(){
+        try{
+            this.daoSimple.deleteApplicantWithMailMariseu();
+            view.printMessage("deleted applicants with mail on mariseu domain");
         } catch (NoSuchElementException e){
             this.view.printMessage(e.getMessage());
         }

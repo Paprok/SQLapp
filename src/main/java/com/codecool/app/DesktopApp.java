@@ -49,6 +49,8 @@ public class DesktopApp {
                 case 6:
                     controller.updateForeman();
                     break;
+                case 7:
+                    controller.deleteMariseuDomain();
             }
         }
     }

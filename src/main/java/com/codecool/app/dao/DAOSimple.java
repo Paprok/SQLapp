@@ -15,4 +15,6 @@ public interface DAOSimple {
     List<List<String>> selectApplicantByCode(int application_code) throws NoSuchElementException;
     List<List<String>> selectApplication54823();
     boolean updateForeman() throws NoSuchElementException;
+    List<List<String>> getForeman() throws NoSuchElementException;
+    boolean deleteApplicantWithMailMariseu() throws NoSuchElementException;
 }

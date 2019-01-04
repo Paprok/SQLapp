@@ -16,6 +16,7 @@ public class TerminalView implements View {
                 "4. Print applicants contact with given mail\n" +
                 "5. Add Marcus\n" +
                 "6. Update Foreman's phone\n" +
+                "7. Delete applicants with mail @mariseu" +
                 "0. Exit";
         System.out.println(menu);
     }

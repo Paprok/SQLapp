@@ -137,4 +137,22 @@ public class DAOSimpleSQL implements DAOSimple {
         ps.execute();
         return true;
     }
+
+    @Override
+    public List<List<String>> getForeman() throws NoSuchElementException {
+        String sql = "SELECT first_name, last_name, phone_number FROM applicants " +
+                "WHERE first_name LIKE 'Jemima%' AND last_name LIKE '%Foreman%'";
+        return getResults(sql);
+    }
+
+    @Override
+    public boolean deleteApplicantWithMailMariseu() throws NoSuchElementException {
+        String sql = "DELETE FROM applicants " +
+                "WHERE email LIKE '%@mauriseu.net%'";
+        try{
+            return execute(sql);
+        } catch (SQLException e){
+            throw new NoSuchElementException("Couldn't delete users from DB");
+        }
+    }
 }
