@@ -41,14 +41,14 @@ public class DAOSimpleSQL implements DAOSimple {
         return getResults(sql);
     }
 
-    private List<List<String>> getResults(String sql) {
+    private List<List<String>> getResults(String sql) throws NoSuchElementException {
         ResultSet resultSet;
         try {
             PreparedStatement ps = this.connection.prepareStatement(sql);
             resultSet = ps.executeQuery();
             return convertResultSetToList(resultSet);
         } catch (SQLException e) {
-            throw new NoSuchElementException("No records found found");
+            throw new NoSuchElementException("No records found");
         }
     }
 
@@ -103,21 +103,38 @@ public class DAOSimpleSQL implements DAOSimple {
     }
 
     @Override
-    public List<List<String>> selectApplicantByCode(int application_code) throws NoSuchElementException{
+    public List<List<String>> selectApplicantByCode(int application_code) throws NoSuchElementException {
         String sql = "SELECT * FROM applicants WHERE application_code = ?";
         try {
             PreparedStatement ps = this.connection.prepareStatement(sql);
             ps.setInt(1, application_code);
             ResultSet resultSet = ps.executeQuery();
             return convertResultSetToList(resultSet);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new NoSuchElementException("Couldn't find applicant with given code");
         }
     }
 
     @Override
     public List<List<String>> selectApplication54823() {
-
         return selectApplicantByCode(54823);
+    }
+
+    @Override
+    public boolean updateForeman() throws NoSuchElementException {
+        String sql = "UPDATE applicants " +
+                "SET phone_number = '003670/223-7459' " +
+                "WHERE first_name LIKE 'Jemima%' AND last_name LIKE '%Foreman%'";
+        try {
+            return execute(sql);
+        } catch (SQLException e) {
+            throw new NoSuchElementException("Couldn't update Jemima Foreman");
+        }
+    }
+
+    private boolean execute(String sql) throws SQLException {
+        PreparedStatement ps = this.connection.prepareStatement(sql);
+        ps.execute();
+        return true;
     }
 }

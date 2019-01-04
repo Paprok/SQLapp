@@ -68,4 +68,13 @@ public class Controller {
             view.printMessage(e.getMessage());
         }
     }
+
+    public void updateForeman(){
+        try{
+            this.daoSimple.updateForeman();
+            view.printMessage("updated Foreman");
+        } catch (NoSuchElementException e){
+            this.view.printMessage(e.getMessage());
+        }
+    }
 }

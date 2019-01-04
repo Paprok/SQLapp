@@ -44,9 +44,10 @@ public class DesktopApp {
                     break;
                 case 5:
                     controller.insertMarcus();
+                    controller.printApplicant54823();
                     break;
                 case 6:
-                    controller.printApplicant54823();
+                    controller.updateForeman();
                     break;
             }
         }

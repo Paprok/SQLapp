@@ -14,4 +14,5 @@ public interface DAOSimple {
     boolean insertMarcus();
     List<List<String>> selectApplicantByCode(int application_code) throws NoSuchElementException;
     List<List<String>> selectApplication54823();
+    boolean updateForeman() throws NoSuchElementException;
 }

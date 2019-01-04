@@ -15,7 +15,7 @@ public class TerminalView implements View {
                 "3. Print Each Carol's Numbers\n" +
                 "4. Print applicants contact with given mail\n" +
                 "5. Add Marcus\n" +
-                "6. Print Marcus\n" +
+                "6. Update Foreman's phone\n" +
                 "0. Exit";
         System.out.println(menu);
     }
