@@ -17,6 +17,7 @@ public class TerminalView implements View {
                 "5. Add Marcus\n" +
                 "6. Update Foreman's phone\n" +
                 "7. Delete applicants with mail @mariseu" +
+                "8. Advanced Search" +
                 "0. Exit";
         System.out.println(menu);
     }
@@ -54,5 +55,18 @@ public class TerminalView implements View {
     @Override
     public void printMessage(String message) {
         System.out.println(message);
+    }
+
+    @Override
+    public String getInput() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input;
+        try {
+            System.out.println("Option: ");
+            input = br.readLine();
+        } catch (IOException e){
+            throw new InputMismatchException("Please enter sth to search");
+        }
+        return input;
     }
 }

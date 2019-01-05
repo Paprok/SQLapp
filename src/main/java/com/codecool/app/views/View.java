@@ -8,4 +8,5 @@ public interface View {
     void printMenu();
     void printResults(List<List<String>> results);
     void printMessage(String message);
+    String getInput() throws  InputMismatchException;
 }
