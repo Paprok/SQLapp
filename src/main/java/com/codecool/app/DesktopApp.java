@@ -2,6 +2,8 @@ package com.codecool.app;
 
 import com.codecool.app.connectors.Connector;
 import com.codecool.app.controllers.Controller;
+import com.codecool.app.dao.DAOAdvanced;
+import com.codecool.app.dao.DAOAdvancedSQL;
 import com.codecool.app.dao.DAOSimple;
 import com.codecool.app.dao.DAOSimpleSQL;
 import com.codecool.app.views.View;
@@ -13,12 +15,14 @@ public class DesktopApp {
     private Connection connection;
     private DAOSimple daoSimple;
     private Controller controller;
+    private DAOAdvanced daoAdvanced;
 
     public DesktopApp(View view) {
         this.view = view;
         this.connection = Connector.getConnection();
         this.daoSimple = new DAOSimpleSQL(connection);
-        this.controller = new Controller(daoSimple, view);
+        this.daoAdvanced = new DAOAdvancedSQL(connection);
+        this.controller = new Controller(daoSimple, daoAdvanced, view);
     }
 
     //TODO: Ask about clean way to manage those shitty queries, is hashmap ok (stored in daoSQL) whereas here only list of menu entries?
@@ -51,6 +55,10 @@ public class DesktopApp {
                     break;
                 case 7:
                     controller.deleteMariseuDomain();
+                    break;
+                case 8:
+                    controller.runAdvancedSearch();
+                    break;
             }
         }
     }
