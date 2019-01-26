@@ -111,7 +111,7 @@ public class DAOSimpleSQL implements DAOSimple {
             ResultSet resultSet = ps.executeQuery();
             return convertResultSetToList(resultSet);
         } catch (SQLException e) {
-            throw new NoSuchElementException("Couldn't find applicant with given code");
+            throw new NoSuchElementException("Couldn't find applicant with given code"); // throw dao exception not to mislead
         }
     }
 

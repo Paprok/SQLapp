@@ -47,7 +47,7 @@ public class DAOAdvancedSQL implements DAOAdvanced {
     }
 
     private void addApplicantColumns() throws SQLException {
-        ResultSet resultSet = connection.prepareStatement("select * from applicants where 1<0").executeQuery();
+        ResultSet resultSet = connection.prepareStatement("select * from applicants where 1<0").executeQuery(); //WTF fix it not to mislead others
         ResultSetMetaData metaData = resultSet.getMetaData();
         int columns = metaData.getColumnCount();
         for (int i = 1; i <= columns; i++) {
